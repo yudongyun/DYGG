@@ -3,6 +3,7 @@ package ch01_start;
 public class Hello {
 
 	public static void main(String[] args) {
+		// 억울함
        System.out.println("Hello World");
        // syso + ctrl+space
        // 실행 단축키 [ctrl+ F11]
