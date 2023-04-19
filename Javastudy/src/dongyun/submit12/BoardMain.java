@@ -7,6 +7,7 @@ public class BoardMain {
 
 	public static void main(String[] args) {
 
+		// 깃허브 테스트 용 주석
 		
 		 ArrayList<Board> boardlist = new ArrayList<>();
 		
