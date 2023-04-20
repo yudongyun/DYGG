@@ -167,7 +167,7 @@ public class ApiDateMain {
 		// Date 타입에서 long 날짜 얻기
 		System.out.println(temp.getTime()); // 밀리세컨드 ~
 
-		System.out.println("\n=========================\n");
+		System.out.println("\n===========월 확인==============\n");
 
 		// 날짜 꺼내기
 		// Calendar 객체로 꺼내는게 편함
