@@ -3,13 +3,12 @@ package ch01_start;
 public class Hello {
 
 	public static void main(String[] args) {
-		
-		// 깃허브 테스트 하자 ㅎ
-		// 11깃허브 테스트 하자 ㅎ
+		// 억울함
+		// 안녕
        System.out.println("Hello World");
        // syso + ctrl+space
        // 실행 단축키 [ctrl+ F11]
-       // 자동완성 단축키 [ctrl+space]3
+       // 자동완성 단축키 [ctrl+space]
        
        // 코드라인 복사(copy lines)
        // 단축키 [ctrl + alt + 방향키 아래]
@@ -27,7 +26,6 @@ public class Hello {
        System.out.println("ㅎㅇ");
  
        
-       // x테스트
        
        
        
