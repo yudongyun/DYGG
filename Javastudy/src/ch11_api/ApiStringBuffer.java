@@ -86,7 +86,7 @@ public class ApiStringBuffer {
 		// 쓰레드 b, c 에서 이를 모를수 있다.
 		
 		
-		
+		// 커밋 뭐냐고
 		
 		
 		
