@@ -8,8 +8,9 @@ public class CartoonBoard extends Board{
 	private CartoonBoard() {}
 
 
-	public CartoonBoard(int num, String title, String date, String content) {
+	public CartoonBoard(int num, String title, String date, String content, String ima) {
 		super(num, title, date, content);
+		this.ima = ima;
 	}
 
 

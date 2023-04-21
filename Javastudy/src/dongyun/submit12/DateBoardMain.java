@@ -11,7 +11,7 @@ import java.util.Date;
 public class DateBoardMain {
 
 	public static void main(String[] args) throws ParseException {
-// dbList에 랜덤 날짜를 가지는 DateBoard 객체 100개 삽입
+		// dbList에 랜덤 날짜를 가지는 DateBoard 객체 100개 삽입
 		ArrayList<DateBoard> dbList = new ArrayList<DateBoard>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 
@@ -30,7 +30,8 @@ public class DateBoardMain {
 		// TODO 코드작성 시작 ~!!
 
 		System.out.println("\n===========3번 문제=============\n");
-
+		
+		
 		System.out.println("날짜별로 정렬 후 출력 (최신순)");
 		for (int i = 0; i < dbList.size() - 1; i++) {
 
@@ -50,7 +51,8 @@ public class DateBoardMain {
 		for (int i = 0; i < dbList.size(); i++) {
 			System.out.println(dbList.get(i));
 		}
-
+		
+		
 		System.out.println("\n============3번 문제============\n");
 
 		System.out.println("날짜별로 정렬 후 출력 (오래된순)");

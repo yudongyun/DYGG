@@ -12,6 +12,10 @@ public class BoardMain {
 		// 깃허브 테스트 용 주석
 		Board boa = Board.getInstance();
 		
+		
+		
+		
+		
 		// 현재 시간 입력 하기
 		
 		Date dateToday = new Date(); // 현재시간 데이트 타입 변환
@@ -69,6 +73,6 @@ public class BoardMain {
 		
 		
 	}
-
+	
 	
 }
