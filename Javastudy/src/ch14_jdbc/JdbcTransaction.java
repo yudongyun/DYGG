@@ -31,7 +31,7 @@ public class JdbcTransaction {
 			System.exit(0); // 현재 프로그램 종료
 		}
 		
-		String url = "jdbc:oracle:thin:@192.168.1.39:1521:xe";
+		String url = "jdbc:oracle:thin:@192.168.1.32:1521:xe";
 		String id = "jdbc";
 		String pw = "oracle";
 		
