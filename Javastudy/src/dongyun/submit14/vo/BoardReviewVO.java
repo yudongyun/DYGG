@@ -15,6 +15,8 @@ public class BoardReviewVO {
         this.brDate = brDate;
     }
 
+    
+    
 	@Override
 	public String toString() {
 		return "BoardReviewVO [brNumber=" + brNumber + ", fbNumber=" + fbNumber + ", brContent=" + brContent

@@ -92,6 +92,25 @@ public class BoardReviewDAO {
 		return result;
 	}
 	
+	// 댓글 삭제하기 메소드
+	// 게시글 댓글 삭제하기
+	public int reviewDelete(Connection conn, int fbNumber) throws SQLException{
+	    StringBuffer query = new StringBuffer();
+	    query.append("DELETE FROM boardreview ");
+	    query.append("WHERE fb_number = ? ");
+	    
+	    PreparedStatement ps = conn.prepareStatement(query.toString());
+	    
+	    int idx = 1;
+	    
+	    ps.setInt(idx++, fbNumber);
+	    
+	    int cnt = ps.executeUpdate();
+	    
+	    ps.close();
+	    
+	    return cnt;
+	}
 	
 	
 	

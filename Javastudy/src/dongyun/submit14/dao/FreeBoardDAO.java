@@ -29,7 +29,7 @@ public class FreeBoardDAO {
 		query.append("		, fb_author		");
 		query.append("		, fb_date		");
 		query.append(") VALUES (			");
-		query.append("	(SELECT MAX(fb_number) + 1 FROM freeboard)  	");
+		query.append("	(freeboard_seq.nextval)  	");
 		query.append("		, ?				");
 		query.append("		, ?				");
 		query.append("		, ?				");
@@ -110,7 +110,27 @@ public class FreeBoardDAO {
 	}
 	
 	
-	
+//	// 게시글 수정하기 메소드
+//	public int freeUpdate(Connection conn, int fbNumber, String title, String content) throws SQLException {
+//	    StringBuffer query = new StringBuffer();
+//	    query.append("UPDATE freeboard ");
+//	    query.append("SET fb_title = ?, fb_content = ? ");
+//	    query.append("WHERE fb_number = ?");
+//	    
+//	    PreparedStatement ps = conn.prepareStatement(query.toString());
+//	    
+//	    int idx = 1;
+//	    
+//	    ps.setString(idx++, title);
+//	    ps.setString(idx++, content);
+//	    ps.setInt(idx++, fbNumber);
+//	    
+//	    int cnt = ps.executeUpdate();
+//	    
+//	    ps.close();
+//	    
+//	    return cnt;
+//	}
 	
 	
 	

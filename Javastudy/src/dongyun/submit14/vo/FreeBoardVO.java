@@ -10,6 +10,7 @@ public class FreeBoardVO {
 	private String author;
 	private String date;
 	
+	
 	public FreeBoardVO() {}
 
 	public FreeBoardVO(int no, String title, String content, String author, String date) {

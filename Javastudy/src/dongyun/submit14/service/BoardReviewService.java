@@ -18,6 +18,8 @@ public class BoardReviewService {
         return instance;
     }
 
+    
+    
     private ConnectionPool cp = ConnectionPool.getInstance();
     private BoardReviewDAO dao = BoardReviewDAO.getInstance();
 
@@ -56,5 +58,28 @@ public class BoardReviewService {
         return result;
 
     }
+    
+    // 댓글 삭제 메소드
+    public int reviewDelete(int fbNumber) {
+    	
+    	Connection conn = cp.getConnection();
+		
+		int delete = 0;
+		
+		try {
+			delete = dao.reviewDelete(conn, fbNumber);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+	        cp.releaseConnection(conn);
+	    }
+    	return delete;
+    }
+    
+    
+    
+    
+    
+    
 
 }
