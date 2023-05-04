@@ -49,6 +49,7 @@ public class BoardService {
 	// 글 목록 조회 메소드
 	
 	public ArrayList<BoardVO> getBodList(){
+		
 		Connection conn = cp.getConnection();
 		
 		ArrayList<BoardVO> result = new ArrayList<>();

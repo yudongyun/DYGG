@@ -19,7 +19,7 @@ public class SignUpDAO {
 		return instance;
 	}
 	
-	// 학생 회원가입(INSERT) 메소드
+	// 회원가입(INSERT) 메소드
 	
 	public int regiSignup(Connection conn, String Id, String Password) throws SQLException {
 		StringBuffer query = new StringBuffer();
