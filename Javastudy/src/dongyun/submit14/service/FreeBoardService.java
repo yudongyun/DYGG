@@ -85,9 +85,40 @@ public class FreeBoardService {
 		
 	}
 	
+	// 게시글 수정 메소드
 	
+	public void freeUpdate(int fbNumber, String title, String content, String date) {
+		
+		Connection conn = cp.getConnection();
+		
+		try {
+			dao.freeUpdate(conn, fbNumber, title, content, date);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+	        cp.releaseConnection(conn);
+	    }
+		
+	}
 	
+	// 게시글 추천 메소드
 	
+	public int freeLike(int number) {
+		
+		Connection conn = cp.getConnection();
+
+	    int result = 0;
+
+	    try {
+	        result = dao.freeLike(conn, number);
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        cp.releaseConnection(conn);
+	    }
+
+	    return result;
+	}
 	
 	
 	

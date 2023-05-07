@@ -7,7 +7,7 @@ public class MemberVO {
 	private String id;
 	private String pw;
 	private String name;
-	private ArrayList<FreeBoardVO> myBoardList;
+//	private ArrayList<FreeBoardVO> myBoardList;
 	
 	public MemberVO() {
 		

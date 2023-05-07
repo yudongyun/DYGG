@@ -79,17 +79,18 @@ public class SubMain {
 
 					ArrayList<FreeBoardVO> myBoardList = new ArrayList<FreeBoardVO>();
 
-					System.out.println(login.getId() + "님 환영합니다.");
+					System.out.println(login.getName() + "님 환영합니다.");
 
 					while (true) {
 						ArrayList<FreeBoardVO> boardList = freesevice.FreeBoardList();
 
 //						for (int i = 0; i < boardList.size(); i++) {
-//							System.out.println("[ no. " + boardList.get(i).getNo() + ". | "
-//									+ boardList.get(i).getTitle() + " | " + boardList.get(i).getDate() + " ]");
+//							System.out.println("▶ " + boardList.get(i).getNo() +  " | "
+//									+ boardList.get(i).getTitle() + " | " + "추천수 : " + boardList.get(i).getLike() + " | " + boardList.get(i).getDate());
 //						}
 						System.out.println("행동을 선택해주세요");
-						System.out.println("1. 판매 글 작성 | 2. 판매 글 조회 | 3. 게시글 삭제 | 4. 로그아웃 | 5. 게시글 검색 | 6. 게시글 수정");
+						System.out
+								.println("1. 글 작성 | 2. 글 조회 | 3. 게시글 삭제 | 4. 로그아웃 | 5. 게시글 검색 | 6. 게시글 수정 | 7. 정보 조회");
 						System.out.print("입력 : ");
 
 						int comm = 0;
@@ -115,15 +116,16 @@ public class SubMain {
 						} else if (comm == 2) {
 							// 글 조회하기
 							for (int i = 0; i < boardList.size(); i++) {
-								System.out.println("[ no. " + boardList.get(i).getNo() + ". | "
-										+ boardList.get(i).getTitle() + " | " + boardList.get(i).getDate() + " ]");
+								System.out.println("▶ " + boardList.get(i).getNo() + " | " + boardList.get(i).getTitle()
+										+ " | " + "추천수 : " + boardList.get(i).getLike() + " | "
+										+ boardList.get(i).getDate());
 							}
-							
+
 							System.out.println("조회 할 글 번호를 입력하세요");
 							System.out.print("입력 : ");
-							
+
 							int click = 0;
-							
+
 							try {
 								click = Integer.parseInt(scan.nextLine());
 							} catch (NumberFormatException e) {
@@ -132,20 +134,21 @@ public class SubMain {
 							}
 
 							ArrayList<BoardReviewVO> boardreview = reviewservice.reviewList(click);
-							
+
 							// 돌아가기
-							
-							
+
 							// 글 내용을 출력하기
 							for (int i = 0; i < boardList.size(); i++) {
 								if (click == boardList.get(i).getNo()) {
 									System.out.println("");
 									System.out.println("==========================");
 									System.out.println("작성자 : " + boardList.get(i).getAuthor());
-									System.out.println("제목 : " + boardList.get(i).getTitle());
-									System.out.println("내용 : " + boardList.get(i).getContent());
+									System.out.println("추천수 : " + boardList.get(i).getLike());
 									System.out.println("작성일 : " + boardList.get(i).getDate());
-									System.out.println("==========================");
+									System.out.println("제목 : " + boardList.get(i).getTitle());
+									System.out.println("--------------------------");
+									System.out.println("내용 : " + boardList.get(i).getContent());
+									System.out.println("--------------------------");
 									System.out.println("");
 								}
 							}
@@ -155,16 +158,15 @@ public class SubMain {
 
 								if (click == boardreview.get(i).getFbNumber()) {
 									System.out.println("==========================");
-									System.out.println("[ 댓글 작성자 : " + boardreview.get(i).getBrAuthor() + " | "
-											+ boardreview.get(i).getBrContent() + " | 작성시간 : "
-											+ boardreview.get(i).getBrDate() + "]");
-									System.out.println("==========================");
+									System.out.println("[ " + boardreview.get(i).getBrAuthor() + " >> "
+											+ boardreview.get(i).getBrContent() + " | " + boardreview.get(i).getBrDate()
+											+ "]");
 									System.out.println("");
 								}
 
 							}
 
-							System.out.println("1. 댓글 작성한다 | 2. 취소");
+							System.out.println("1. 댓글 작성한다 | 2. 추천하기 | 3. 취소");
 							System.out.print("입력 : ");
 
 							int click2 = Integer.parseInt(scan.nextLine());
@@ -179,12 +181,23 @@ public class SubMain {
 								String content = scan.nextLine();
 
 								reviewservice.reviewSave(click, content, login.getId(), strToday);
-							} else {
+							} else if (click2 == 2) {
+								// 해당 글 추천하기
+								int result = freesevice.freeLike(click);
+
+								if (result > 0) {
+									System.out.println("해당 게시글을 추천했습니다");
+								} else {
+									System.out.println("추천을 실패했습니다.");
+								}
+
+							} else if (click2 == 3) {
 								// 취소
+								break;
 							}
 
 						} else if (comm == 3) {
-							// 삭제
+							// 게시글 삭제하기
 
 							System.out.println("삭제 할 글 번호를 입력하세요");
 							System.out.print("입력 : ");
@@ -216,49 +229,67 @@ public class SubMain {
 							System.out.println("검색어를 입력하세요");
 							System.out.print("입력 : ");
 							String keyword = scan.nextLine();
-							
+
+							boolean found = false; // 검색어를 포함하는 게시글이 있는지 여부를 저장하는 변수
+
 							for (int i = 0; i < boardList.size(); i++) {
 								if (boardList.get(i).getTitle().contains(keyword)) {
 									// 검색어가 제목에 포함되어 있으면 출력
 									System.out.println("[ no. " + boardList.get(i).getNo() + ". | "
 											+ boardList.get(i).getTitle() + " | " + boardList.get(i).getDate() + " ]");
-									break;
-								}else {
-									System.out.println("검색 결과가 없습니다.");
+									found = true;
+								}
+							}
+
+							if (!found) {
+								System.out.println("검색 결과가 없습니다.");
+							}
+							break;
+
+						} else if (comm == 6) {
+							// 게시글 수정하기
+							System.out.println("수정 할 글 번호를 입력하세요");
+							System.out.print("입력 : ");
+
+							int click = Integer.parseInt(scan.nextLine());
+
+							boolean isExist = false;
+
+							for (int i = 0; i < boardList.size(); i++) {
+								if (click == boardList.get(i).getNo()) {
+									isExist = true;
+									System.out.println("수정 할 제목을 입력해주세요");
+									System.out.print(">> ");
+									String title = scan.nextLine();
+
+									System.out.println("수정 할 내용을 입력해주세요");
+									System.out.print(">> ");
+									String content = scan.nextLine();
+
+									// 게시글 수정
+									freesevice.freeUpdate(click, title, content, strToday);
+									System.out.println("게시글이 수정되었습니다.");
 									break;
 								}
 							}
-							
-						} else if(comm == 6) {
-							// 게시글 수정하기
-//							System.out.println("수정 할 글 번호를 입력하세요");
-//						    System.out.print("입력 : ");
-//
-//						    int click = Integer.parseInt(scan.nextLine());
-//						    
-//						    boolean isExist = false;
-//						    for (int i = 0; i < boardList.size(); i++) {
-//						        if (click == boardList.get(i).getNo()) {
-//						            isExist = true;
-//						            System.out.println("수정 할 내용을 입력해주세요");
-//						            System.out.print(">> ");
-//						            String content = scan.nextLine();
-//
-//						            // 게시글 수정
-//						            freesevice.freeUpdate(click, content);
-//						            System.out.println("게시글이 수정되었습니다.");
-//						            break;
-//						        }
-//						    }
-//
-//						    if (!isExist) {
-//						        System.out.println("글 번호를 정확히 입력해주세요");
-//						    }
-//						    
-						    
-						    
-						    
-							
+
+							if (!isExist) {
+								System.out.println("글 번호를 정확히 입력해주세요");
+							}
+
+						} else if (comm == 7) {
+							// 정보조회
+
+							System.out.println("조회할 ID 를 입력하세요");
+							System.out.print(">>  ");
+							String searchId = scan.nextLine();
+
+							memservice.showpro(searchId);
+
+							// 내가 작성한 글 목록 보기
+
+							// 내가 작성한 댓글 목록 보기
+
 						}
 
 						else {

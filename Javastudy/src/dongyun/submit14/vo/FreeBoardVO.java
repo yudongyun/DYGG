@@ -9,23 +9,24 @@ public class FreeBoardVO {
 	private String content;
 	private String author;
 	private String date;
-	
+	private int like;
 	
 	public FreeBoardVO() {}
 
-	public FreeBoardVO(int no, String title, String content, String author, String date) {
+	public FreeBoardVO(int no, String title, String content, String author, String date, int like) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.content = content;
 		this.author = author;
 		this.date = date;
+		this.like = like;
 	}
 
 	@Override
 	public String toString() {
 		return "FreeBoardVO [no=" + no + ", title=" + title + ", content=" + content + ", author=" + author + ", date="
-				+ date + "]";
+				+ date + ", like=" + like + "]";
 	}
 
 	public int getNo() {
@@ -67,6 +68,15 @@ public class FreeBoardVO {
 	public void setDate(String date) {
 		this.date = date;
 	}
+
+	public int getLike() {
+		return like;
+	}
+
+	public void setLike(int like) {
+		this.like = like;
+	}
+
 	
 	
 	

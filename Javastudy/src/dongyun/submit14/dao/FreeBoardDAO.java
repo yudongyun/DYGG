@@ -62,6 +62,7 @@ public class FreeBoardDAO {
 		query.append("	, 	fb_content			");
 		query.append("	, 	fb_author			");
 		query.append("	, 	fb_date			");
+		query.append("	, 	fb_like			");
 		query.append("FROM					");
 		query.append("		freeboard			");
 		query.append("ORDER BY	 				"); 
@@ -79,8 +80,9 @@ public class FreeBoardDAO {
 			String content = rs.getString("fb_content");
 			String author = rs.getString("fb_author");
 			String date = rs.getString("fb_date");
+			int like = rs.getInt("fb_like");
 			
-			FreeBoardVO freebod = new FreeBoardVO(number, title, content, author, date);
+			FreeBoardVO freebod = new FreeBoardVO(number, title, content, author, date, like);
 			
 			result.add(freebod);
 		}
@@ -111,29 +113,46 @@ public class FreeBoardDAO {
 	
 	
 //	// 게시글 수정하기 메소드
-//	public int freeUpdate(Connection conn, int fbNumber, String title, String content) throws SQLException {
-//	    StringBuffer query = new StringBuffer();
-//	    query.append("UPDATE freeboard ");
-//	    query.append("SET fb_title = ?, fb_content = ? ");
-//	    query.append("WHERE fb_number = ?");
-//	    
-//	    PreparedStatement ps = conn.prepareStatement(query.toString());
-//	    
-//	    int idx = 1;
-//	    
-//	    ps.setString(idx++, title);
-//	    ps.setString(idx++, content);
-//	    ps.setInt(idx++, fbNumber);
-//	    
-//	    int cnt = ps.executeUpdate();
-//	    
-//	    ps.close();
-//	    
-//	    return cnt;
-//	}
+	public int freeUpdate(Connection conn, int fbNumber, String title, String content, String date) throws SQLException {
+	    StringBuffer query = new StringBuffer();
+	    query.append("UPDATE freeboard ");
+	    query.append("SET fb_title = ?, fb_content = ?, fb_date = ? ");
+	    query.append("WHERE fb_number = ?");
+	    
+	    PreparedStatement ps = conn.prepareStatement(query.toString());
+	    
+	    int idx = 1;
+	    
+	    ps.setString(idx++, title);
+	    ps.setString(idx++, content);
+	    ps.setString(idx++, date);
+	    ps.setInt(idx++, fbNumber);
+	    
+	    int cnt = ps.executeUpdate();
+	    
+	    ps.close();
+	    
+	    return cnt;
+	}
 	
+	// 게시글 추천하기 메소드
 	
-	
+	public int freeLike(Connection conn, int number) throws SQLException {
+	    StringBuffer query = new StringBuffer();
+	    query.append("UPDATE freeboard ");
+	    query.append(" SET fb_like = fb_like + 1");
+	    query.append("WHERE fb_number = ?");
+
+	    PreparedStatement ps = conn.prepareStatement(query.toString());
+
+	    ps.setInt(1, number);
+
+	    int cnt = ps.executeUpdate();
+
+	    ps.close();
+
+	    return cnt;
+	}
 	
 	
 	

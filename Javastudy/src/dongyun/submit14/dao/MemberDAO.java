@@ -79,7 +79,26 @@ public class MemberDAO {
 		return result;
 	}
 	
-	
+	// 정보 조회하기
+	public void showpro(Connection conn, String id) throws SQLException {
+	    StringBuffer query = new StringBuffer();
+	    query.append("SELECT mem_id, mem_password, mem_name ");
+	    query.append("FROM members ");
+	    query.append("WHERE mem_id = ?");
+
+	    PreparedStatement ps = conn.prepareStatement(query.toString());
+	    ps.setString(1, id);
+
+	    ResultSet rs = ps.executeQuery();
+
+	    while (rs.next()) {
+	        System.out.println("아이디 : " + rs.getString("mem_id"));
+	        System.out.println("이름 : " + rs.getString("mem_name"));
+	    }
+
+	    rs.close();
+	    ps.close();
+	}
 	
 	
 	

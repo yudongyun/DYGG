@@ -50,7 +50,7 @@ public class MemberService {
 		try {
 			result = dao.login(conn, mem);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("등록되지않은 아이디입니다.");
 		}finally {
 			cp.releaseConnection(conn);
 		}
@@ -60,7 +60,21 @@ public class MemberService {
 		
 	}
 	
+	// 정보 조회 메소드
 	
+	public void showpro(String id) {
+		
+		Connection conn = cp.getConnection();
+		
+		try {
+			dao.showpro(conn, id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			cp.releaseConnection(conn);
+		}
+		
+	}
 	
 	
 	
