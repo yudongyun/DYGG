@@ -132,6 +132,31 @@ public class BoardReviewDAO {
 		
 	}
 	
+	// 댓글의 개수를 카운트하기
+	public int reviewcount(Connection conn, String id) throws SQLException {
+		StringBuffer query = new StringBuffer();
+		query.append("SELECT count(*) AS recount ");
+		query.append("FROM boardreview ");
+		query.append("WHERE br_author = ?");
+		
+	    int count = 0;
+	    
+	    PreparedStatement ps = conn.prepareStatement(query.toString());
+	    ps.setString(1, id);
+	    
+	    ResultSet rs = ps.executeQuery();
+	    
+	    if (rs.next()) {
+	        count = rs.getInt("recount");
+	    }
+	    rs.close();
+	    ps.close();
+	    return count;
+	    
+	    
+	}
+	
+	
 	
 	
 	

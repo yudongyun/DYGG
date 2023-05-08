@@ -39,50 +39,41 @@ public class MemberService {
 			cp.releaseConnection(conn);
 		}
 	}
-	
+
 	// 로그인 메소드 !
-	
+
 	public MemberVO login(MemberVO mem) {
-		
+
 		Connection conn = cp.getConnection();
-		
+
 		MemberVO result = new MemberVO();
-		
+
 		try {
 			result = dao.login(conn, mem);
 		} catch (SQLException e) {
 			System.out.println("등록되지않은 아이디입니다.");
-		}finally {
+		} finally {
 			cp.releaseConnection(conn);
 		}
-		
+
 		return result;
-		
-		
+
 	}
-	
+
 	// 정보 조회 메소드
-	
+
 	public void showpro(String id) {
-		
+
 		Connection conn = cp.getConnection();
-		
+
 		try {
 			dao.showpro(conn, id);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			cp.releaseConnection(conn);
 		}
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

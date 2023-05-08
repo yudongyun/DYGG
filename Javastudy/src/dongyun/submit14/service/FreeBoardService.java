@@ -134,6 +134,27 @@ public class FreeBoardService {
 		}
 	}
 	
+	// 글의 개수 카운트 메소드
+	
+	public int boardcount(String id) {
+		
+		Connection conn = cp.getConnection();
+		
+		int result = 0;
+		
+		try {
+			result = dao.boardcount(conn, id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			cp.releaseConnection(conn);
+		}
+		return result;
+		
+	}
+	
+	
+	
 	
 	
 	

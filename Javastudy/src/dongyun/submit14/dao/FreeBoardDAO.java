@@ -175,6 +175,38 @@ public class FreeBoardDAO {
 	}
 	
 	
+	// 글의 개수를 카운트하기
+	public int boardcount(Connection conn, String id) throws SQLException {
+		StringBuffer query = new StringBuffer();
+		query.append("SELECT count(*) AS boardcount ");
+		query.append("FROM freeboard ");
+		query.append("WHERE fb_author = ?");
+		
+		int count = 0;
+	    
+	    PreparedStatement ps = conn.prepareStatement(query.toString());
+	    ps.setString(1, id);
+	    
+	    ResultSet rs = ps.executeQuery();
+	    
+	    if (rs.next()) {
+	        count = rs.getInt("boardcount");
+	    }
+	    rs.close();
+	    ps.close();
+	    return count;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

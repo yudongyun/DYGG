@@ -90,6 +90,28 @@ public class BoardReviewService {
 		}
 	}
 	
+	// 댓글개수 카운트 메소드
+	
+	public int reviewcount(String id) {
+		
+		Connection conn = cp.getConnection();
+		
+		int result = 0;
+		
+		try {
+			result = dao.reviewcount(conn, id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			cp.releaseConnection(conn);
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
 	
 
 }

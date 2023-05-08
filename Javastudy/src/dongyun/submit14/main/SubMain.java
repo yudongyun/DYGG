@@ -30,7 +30,7 @@ public class SubMain {
 		Scanner scan = new Scanner(System.in);
 
 		while (true) {
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 30; i++) {
 				System.out.println("");
 			}
 			System.out.println("\n"
@@ -73,10 +73,10 @@ public class SubMain {
 
 			if (select == 2) {
 				// login
-				System.out.println("아이디 : ");
+				System.out.print("아이디 : ");
 				String id = scan.nextLine();
 
-				System.out.println("비밀번호 : ");
+				System.out.print("비밀번호 : ");
 				String pw = scan.nextLine();
 
 				MemberVO mem = new MemberVO();
@@ -92,7 +92,7 @@ public class SubMain {
 
 //					ArrayList<FreeBoardVO> myBoardList = new ArrayList<FreeBoardVO>();
 
-					for (int i = 0; i < 20; i++) {
+					for (int i = 0; i < 30; i++) {
 						System.out.println("");
 					}
 
@@ -105,6 +105,7 @@ public class SubMain {
 //							System.out.println("▶ " + boardList.get(i).getNo() +  " | "
 //									+ boardList.get(i).getTitle() + " | " + "추천수 : " + boardList.get(i).getLike() + " | " + boardList.get(i).getDate());
 //						}
+						System.out.println("");
 						System.out.println("행동을 선택해주세요");
 						System.out.println("1. 글 작성 | 2. 글 조회 | 3. 글 삭제 | 4. 글 검색 | 5. 글 수정 | 6. 정보 조회 | 7. 로그아웃");
 						System.out.print("입력 : ");
@@ -120,7 +121,7 @@ public class SubMain {
 						if (comm == 1) {
 							// 글 작성하기
 							// 글 작성시 freeboard 테이블에 작성된 글이 저장됩니다.
-							for (int i = 0; i < 20; i++) {
+							for (int i = 0; i < 30; i++) {
 								System.out.println("");
 							}
 
@@ -152,7 +153,9 @@ public class SubMain {
 							for (int i = 0; i < 5; i++) {
 								System.out.println("");
 							}
-
+							
+							
+							
 							System.out.println("< 글 목록 > ");
 							for (int i = 0; i < boardList.size(); i++) {
 								System.out.println("▶ " + boardList.get(i).getNo() + " | " + boardList.get(i).getTitle()
@@ -177,7 +180,7 @@ public class SubMain {
 							// 돌아가기
 
 							// 글 내용을 출력하기
-							for (int i = 0; i < 20; i++) {
+							for (int i = 0; i < 30; i++) {
 								System.out.println("");
 							}
 
@@ -247,7 +250,7 @@ public class SubMain {
 							// 게시글 삭제하기
 							// 특정 게시글 번호를 입력받아 게시글을 삭제합니다. 
 							
-							for (int i = 0; i < 20; i++) {
+							for (int i = 0; i < 30; i++) {
 								System.out.println("");
 							}
 
@@ -276,7 +279,7 @@ public class SubMain {
 						} else if (comm == 4) {
 							// 게시글 검색
 							// 특정 검색어가 포함된 게시글의 목록을 조회할 수 있습니다.
-							for (int i = 0; i < 20; i++) {
+							for (int i = 0; i < 30; i++) {
 								System.out.println("");
 							}
 
@@ -302,7 +305,7 @@ public class SubMain {
 						} else if (comm == 5) {
 							// 게시글 수정하기
 							// 게시글 번호를 입력받아 해당 게시글의 제목과 내용을 수정할 수 있습니다.
-							for (int i = 0; i < 20; i++) {
+							for (int i = 0; i < 30; i++) {
 								System.out.println("");
 							}
 
@@ -338,7 +341,7 @@ public class SubMain {
 						} else if (comm == 6) {
 							// 특정 ID 정보조회
 
-							for (int i = 0; i < 20; i++) {
+							for (int i = 0; i < 30; i++) {
 								System.out.println("");
 							}
 
@@ -350,12 +353,18 @@ public class SubMain {
 							// 조회된 사람의 정보, 글목록, 댓글목록이 출력됩니다.
 							
 							// 조회된 사람의 정보 출력
-							System.out.println("정보 조회))");
+							System.out.println("((정보 조회))");
 							memservice.showpro(searchId);
-							System.out.println("========작성한 글========");
+							System.out.println("");
+							System.out.println("========활동 내역========");
+							System.out.println(searchId + "님이 작성한 총 글의 수 : " + freesevice.boardcount(searchId) + " 개");
+							System.out.println(searchId + "님이 작성한 총 댓글의 수 : " + reviewservice.reviewcount(searchId) + " 개");
+							System.out.println("");
+							System.out.println("========작성한 글 목록========");
 							// 조회된 사람이 작성한 글 목록 출력
 							freesevice.showinfo(searchId);
-							System.out.println("========작성한 댓글========");
+							System.out.println("");
+							System.out.println("========작성한 댓글 목록========");
 							// 조회된 사람이 작성한 댓글 목록 출력
 							reviewservice.showreinfo(searchId);
 							System.out.println("================");
