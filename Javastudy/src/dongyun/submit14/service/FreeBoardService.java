@@ -120,6 +120,20 @@ public class FreeBoardService {
 	    return result;
 	}
 	
+	// 정보 조회 하면서 게시글까지 조회하기 메소드
+	public void showinfo(String id) {
+		
+		Connection conn = cp.getConnection();
+		
+		try {
+			dao.showinfo(conn, id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			cp.releaseConnection(conn);
+		}
+	}
+	
 	
 	
 	

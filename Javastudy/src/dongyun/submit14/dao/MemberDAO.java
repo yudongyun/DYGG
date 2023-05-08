@@ -93,7 +93,7 @@ public class MemberDAO {
 
 	    while (rs.next()) {
 	        System.out.println("아이디 : " + rs.getString("mem_id"));
-	        System.out.println("이름 : " + rs.getString("mem_name"));
+	        System.out.println("닉네임 : " + rs.getString("mem_name"));
 	    }
 
 	    rs.close();

@@ -24,13 +24,26 @@ public class SubMain {
 
 		// 현재 시간 추출하기
 		Date dateToday = new Date(); // 현재시간 데이트 타입 변환
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); // 새로운 포맷을 적용
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); // 새로운1 포맷을 적용
 		String strToday = sdf.format(dateToday);
 
 		Scanner scan = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("넥스트 중고나라에 오신걸 환영합니다.");
+			for (int i = 0; i < 20; i++) {
+				System.out.println("");
+			}
+			System.out.println("\n"
+					+ " _   _  _____ __   __ _____                                                    _  _          \n"
+					+ "| \\ | ||  ___|\\ \\ / /|_   _|                                                  (_)| |         \n"
+					+ "|  \\| || |__   \\ V /   | |     ___   ___   _ __ ___   _ __ ___   _   _  _ __   _ | |_  _   _ \n"
+					+ "| . ` ||  __|  /   \\   | |    / __| / _ \\ | '_ ` _ \\ | '_ ` _ \\ | | | || '_ \\ | || __|| | | |\n"
+					+ "| |\\  || |___ / /^\\ \\  | |   | (__ | (_) || | | | | || | | | | || |_| || | | || || |_ | |_| |\n"
+					+ "\\_| \\_/\\____/ \\/   \\/  \\_/    \\___| \\___/ |_| |_| |_||_| |_| |_| \\__,_||_| |_||_| \\__| \\__, |\n"
+					+ "                                                                                        __/ |\n"
+					+ "                                                                                       |___/ \n"
+					+ "");
+			System.out.println("넥스트 커뮤니티에 오신걸 환영합니다.");
 			System.out.println("1. Sign up | 2. Login | 3. exit");
 			System.out.print(">> ");
 
@@ -77,9 +90,13 @@ public class SubMain {
 //					ArrayList<FreeBoardVO> boardList = freesevice.FreeBoardList();
 //					ArrayList<FreeBoardVO> boardList = freesevice.FreeBoardList();
 
-					ArrayList<FreeBoardVO> myBoardList = new ArrayList<FreeBoardVO>();
+//					ArrayList<FreeBoardVO> myBoardList = new ArrayList<FreeBoardVO>();
 
-					System.out.println(login.getName() + "님 환영합니다.");
+					for (int i = 0; i < 20; i++) {
+						System.out.println("");
+					}
+
+					System.out.println(login.getId() + "님 환영합니다.");
 
 					while (true) {
 						ArrayList<FreeBoardVO> boardList = freesevice.FreeBoardList();
@@ -89,8 +106,7 @@ public class SubMain {
 //									+ boardList.get(i).getTitle() + " | " + "추천수 : " + boardList.get(i).getLike() + " | " + boardList.get(i).getDate());
 //						}
 						System.out.println("행동을 선택해주세요");
-						System.out
-								.println("1. 글 작성 | 2. 글 조회 | 3. 게시글 삭제 | 4. 로그아웃 | 5. 게시글 검색 | 6. 게시글 수정 | 7. 정보 조회");
+						System.out.println("1. 글 작성 | 2. 글 조회 | 3. 글 삭제 | 4. 글 검색 | 5. 글 수정 | 6. 정보 조회 | 7. 로그아웃");
 						System.out.print("입력 : ");
 
 						int comm = 0;
@@ -102,7 +118,11 @@ public class SubMain {
 							continue;
 						}
 						if (comm == 1) {
-							// 판매 글 작성하기
+							// 글 작성하기
+							// 글 작성시 freeboard 테이블에 작성된 글이 저장됩니다.
+							for (int i = 0; i < 20; i++) {
+								System.out.println("");
+							}
 
 							System.out.println("글 제목을 입력해주세요");
 							System.out.print(">> ");
@@ -115,6 +135,25 @@ public class SubMain {
 
 						} else if (comm == 2) {
 							// 글 조회하기
+							// 해당 게시글의 글을 조회 시 글의 상세정보와 댓글의 내용을 출력합니다.
+							for (int i = 0; i < 20; i++) {
+								System.out.println("");
+							}
+
+							System.out.println(
+									"ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫");
+							System.out.println("<공지사항>");
+							System.out.println("커뮤니티 회원 간 예의를 지켜주세요");
+							System.out.println("상대를 비방하거나 욕설은 삼가해주세요");
+							System.out.println("클린한 커뮤니티 문화를 만들어주세요");
+							System.out.println(
+									"ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫ო͈̫");
+
+							for (int i = 0; i < 5; i++) {
+								System.out.println("");
+							}
+
+							System.out.println("< 글 목록 > ");
 							for (int i = 0; i < boardList.size(); i++) {
 								System.out.println("▶ " + boardList.get(i).getNo() + " | " + boardList.get(i).getTitle()
 										+ " | " + "추천수 : " + boardList.get(i).getLike() + " | "
@@ -138,17 +177,24 @@ public class SubMain {
 							// 돌아가기
 
 							// 글 내용을 출력하기
+							for (int i = 0; i < 20; i++) {
+								System.out.println("");
+							}
+
 							for (int i = 0; i < boardList.size(); i++) {
 								if (click == boardList.get(i).getNo()) {
 									System.out.println("");
 									System.out.println("==========================");
 									System.out.println("작성자 : " + boardList.get(i).getAuthor());
-									System.out.println("추천수 : " + boardList.get(i).getLike());
 									System.out.println("작성일 : " + boardList.get(i).getDate());
+									System.out.println("추천수 : " + boardList.get(i).getLike());
 									System.out.println("제목 : " + boardList.get(i).getTitle());
-									System.out.println("--------------------------");
-									System.out.println("내용 : " + boardList.get(i).getContent());
-									System.out.println("--------------------------");
+									System.out.println("==========================");
+									System.out.println("");
+									// 내용을 출력함
+									System.out.println("[ " + boardList.get(i).getContent() + " ]");
+									System.out.println("");
+									System.out.println("");
 									System.out.println("");
 								}
 							}
@@ -157,16 +203,16 @@ public class SubMain {
 							for (int i = 0; i < boardreview.size(); i++) {
 
 								if (click == boardreview.get(i).getFbNumber()) {
-									System.out.println("==========================");
-									System.out.println("[ " + boardreview.get(i).getBrAuthor() + " >> "
+									System.out.println("ㄴ" + boardreview.get(i).getBrAuthor() + " : "
 											+ boardreview.get(i).getBrContent() + " | " + boardreview.get(i).getBrDate()
-											+ "]");
+											+ "");
+
 									System.out.println("");
 								}
 
 							}
 
-							System.out.println("1. 댓글 작성한다 | 2. 추천하기 | 3. 취소");
+							System.out.println("1. 댓글 작성 | 2. 추천(좋아요) | 3. 뒤로가기");
 							System.out.print("입력 : ");
 
 							int click2 = Integer.parseInt(scan.nextLine());
@@ -176,6 +222,8 @@ public class SubMain {
 //								System.out.println("댓글 제목을 입력해주세요");
 //								System.out.print(">> ");
 //								String title = scan.nextLine();
+								// 댓글은 댓글제목을 입력받지 않아도 되기 때문에
+								// 댓글의 내용만 입력받습니다.
 								System.out.println("댓글 내용을 입력해주세요");
 								System.out.print(">> ");
 								String content = scan.nextLine();
@@ -193,11 +241,15 @@ public class SubMain {
 
 							} else if (click2 == 3) {
 								// 취소
-								break;
 							}
 
 						} else if (comm == 3) {
 							// 게시글 삭제하기
+							// 특정 게시글 번호를 입력받아 게시글을 삭제합니다. 
+							
+							for (int i = 0; i < 20; i++) {
+								System.out.println("");
+							}
 
 							System.out.println("삭제 할 글 번호를 입력하세요");
 							System.out.print("입력 : ");
@@ -205,6 +257,7 @@ public class SubMain {
 							int click = Integer.parseInt(scan.nextLine());
 
 							// 댓글을 삭제한다.
+							// 자식 키 먼저 삭제 후 부모 키를 삭제 해야함
 							int reviewrst = reviewservice.reviewDelete(click);
 
 //							if (reviewrst >= 1) {
@@ -221,10 +274,11 @@ public class SubMain {
 							}
 
 						} else if (comm == 4) {
-							// 로그아웃
-							break;
-						} else if (comm == 5) {
 							// 게시글 검색
+							// 특정 검색어가 포함된 게시글의 목록을 조회할 수 있습니다.
+							for (int i = 0; i < 20; i++) {
+								System.out.println("");
+							}
 
 							System.out.println("검색어를 입력하세요");
 							System.out.print("입력 : ");
@@ -244,10 +298,14 @@ public class SubMain {
 							if (!found) {
 								System.out.println("검색 결과가 없습니다.");
 							}
-							break;
 
-						} else if (comm == 6) {
+						} else if (comm == 5) {
 							// 게시글 수정하기
+							// 게시글 번호를 입력받아 해당 게시글의 제목과 내용을 수정할 수 있습니다.
+							for (int i = 0; i < 20; i++) {
+								System.out.println("");
+							}
+
 							System.out.println("수정 할 글 번호를 입력하세요");
 							System.out.print("입력 : ");
 
@@ -277,18 +335,35 @@ public class SubMain {
 								System.out.println("글 번호를 정확히 입력해주세요");
 							}
 
-						} else if (comm == 7) {
-							// 정보조회
+						} else if (comm == 6) {
+							// 특정 ID 정보조회
+
+							for (int i = 0; i < 20; i++) {
+								System.out.println("");
+							}
 
 							System.out.println("조회할 ID 를 입력하세요");
 							System.out.print(">>  ");
 							String searchId = scan.nextLine();
 
+							// 조회할 ID를 입력시 미리 생성해둔 메소드를 통해서
+							// 조회된 사람의 정보, 글목록, 댓글목록이 출력됩니다.
+							
+							// 조회된 사람의 정보 출력
+							System.out.println("정보 조회))");
 							memservice.showpro(searchId);
+							System.out.println("========작성한 글========");
+							// 조회된 사람이 작성한 글 목록 출력
+							freesevice.showinfo(searchId);
+							System.out.println("========작성한 댓글========");
+							// 조회된 사람이 작성한 댓글 목록 출력
+							reviewservice.showreinfo(searchId);
+							System.out.println("================");
 
-							// 내가 작성한 글 목록 보기
+						} else if (comm == 7) {
 
-							// 내가 작성한 댓글 목록 보기
+							// 로그아웃
+							break;
 
 						}
 

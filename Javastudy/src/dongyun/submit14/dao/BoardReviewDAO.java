@@ -112,7 +112,25 @@ public class BoardReviewDAO {
 	    return cnt;
 	}
 	
-	
+	// 정보 조회 하면서 댓글까지 조회하기 메소드
+	public void showreinfo(Connection conn, String id) throws SQLException {
+		StringBuffer query = new StringBuffer();
+	    query.append("SELECT br_number, br_content, br_author ");
+	    query.append("FROM boardreview ");
+	    query.append("WHERE br_author = ?");
+		
+	    PreparedStatement ps = conn.prepareStatement(query.toString());
+	    ps.setString(1, id);
+	    
+	    ResultSet rs = ps.executeQuery();
+	    
+	    while (rs.next()) {
+	        System.out.println("[ " + rs.getInt("br_number") + " | " + rs.getString("br_content") + " | " + rs.getString("br_author") + " ]");
+	    }
+	    rs.close();
+	    ps.close();
+		
+	}
 	
 	
 	

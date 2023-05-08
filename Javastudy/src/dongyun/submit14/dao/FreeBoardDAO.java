@@ -154,6 +154,27 @@ public class FreeBoardDAO {
 	    return cnt;
 	}
 	
+	// 정보 조회 하면서 게시글까지 조회하기 메소드
+	public void showinfo(Connection conn, String id) throws SQLException {
+		StringBuffer query = new StringBuffer();
+	    query.append("SELECT fb_number, fb_title, fb_author ");
+	    query.append("FROM freeboard ");
+	    query.append("WHERE fb_author = ?");
+		
+	    PreparedStatement ps = conn.prepareStatement(query.toString());
+	    ps.setString(1, id);
+		
+	    ResultSet rs = ps.executeQuery();
+		
+	    while (rs.next()) {
+	        System.out.println("[ " + rs.getInt("fb_number") + " | " + rs.getString("fb_title") + " | " + rs.getString("fb_author") + " ]");
+	    }
+	    rs.close();
+	    ps.close();
+		
+	}
+	
+	
 	
 	
 	

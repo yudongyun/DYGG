@@ -33,6 +33,7 @@ public class MemberService {
 			dao.newMember(conn, id, pw, name);
 			System.out.println("회원가입이 완료되었습니다 ! ");
 		} catch (SQLException e) {
+			// DB에서 mem_id를 유니크 값으로 설정
 			System.out.println("이미 가입된 아이디 입니다.");
 		} finally {
 			cp.releaseConnection(conn);
